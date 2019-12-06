@@ -1,0 +1,23 @@
+[33mcommit 7d8f5e059ffcaedecfb595fde618f6a1cf66ede5[m[33m ([m[1;36mHEAD -> [m[1;32mstatic-pages[m[33m, [m[1;31morigin/static-pages[m[33m)[m
+Author: FelipeEnne <felipeenne@gmail.com>
+Date:   Thu Dec 5 13:17:16 2019 -0300
+
+    Add a Static Pages controller
+
+[33mcommit cfc8a8b079f2047b7a8323ae67b73297ea8f5860[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/development[m[33m, [m[1;31mheroku/master[m[33m, [m[1;32mmaster[m[33m, [m[1;32mdevelopment[m[33m)[m
+Author: FelipeEnne <felipeenne@gmail.com>
+Date:   Wed Dec 4 19:41:28 2019 -0300
+
+    Add hello
+
+[33mcommit e4e67be90dd378f821a2ec283fe406e3612cdf7b[m
+Author: FelipeEnne <felipeenne@gmail.com>
+Date:   Wed Dec 4 19:33:18 2019 -0300
+
+    Improve the README
+
+[33mcommit a47244f3f2d766921f68704bfa0fffc355a5130e[m
+Author: FelipeEnne <felipeenne@gmail.com>
+Date:   Wed Dec 4 19:31:50 2019 -0300
+
+    Initialize repository
