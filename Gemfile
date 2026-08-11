@@ -29,6 +29,7 @@ end
 
 group :development do
   gem "web-console"
+  gem "bundler-audit", require: false
 end
 
 group :test do
