@@ -7,16 +7,16 @@ class PasswordResetsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(email: params[:password_reset][:email].downcase)
+    email = params.dig(:password_reset, :email).to_s.downcase
+    @user = User.find_by(email: email)
     if @user
       @user.create_reset_digest
       @user.send_password_reset_email
-      flash[:info] = "Email sent with password reset instructions"
-      redirect_to root_url
-    else
-      flash.now[:danger] = "Email address not found"
-      render 'new'
     end
+
+    # Keep the response identical whether or not the address has an account.
+    flash[:info] = "If that email address is registered, password reset instructions will be sent."
+    redirect_to root_url
   end
 
   def edit
@@ -27,6 +27,9 @@ class PasswordResetsController < ApplicationController
       @user.errors.add(:password, "can't be empty")
       render 'edit'
     elsif @user.update(user_params)          # Case (4)
+      # A password reset invalidates both reset links and existing remembered
+      # sessions so a stolen persistent cookie cannot survive the reset.
+      @user.update_columns(reset_digest: nil, reset_sent_at: nil, remember_digest: nil)
       log_in @user
       flash[:success] = "Password has been reset."
       redirect_to @user
@@ -55,7 +58,7 @@ class PasswordResetsController < ApplicationController
 
      # Checks expiration of reset token.
      def check_expiration
-      if @user.password_reset_expired?
+      if @user.nil? || @user.reset_sent_at.nil? || @user.password_reset_expired?
         flash[:danger] = "Password reset has expired."
         redirect_to new_password_reset_url
       end

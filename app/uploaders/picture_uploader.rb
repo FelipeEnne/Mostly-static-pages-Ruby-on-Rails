@@ -19,4 +19,9 @@ class PictureUploader < CarrierWave::Uploader::Base
   def extension_allowlist
     %w[jpg jpeg gif png]
   end
+
+  # Reject active content such as SVG files, even when their extension is renamed.
+  def content_type_allowlist
+    %r{\Aimage/(?:jpeg|png|gif)\z}
+  end
 end
