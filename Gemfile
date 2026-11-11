@@ -23,7 +23,7 @@ gem "mini_magick"
 gem "tzinfo-data", platforms: %i[windows jruby]
 
 group :development, :test do
-  gem "sqlite3", "~> 2.9.6"
+  gem "sqlite3", "~> 2.10.2"
   gem "debug", platforms: %i[mri windows], require: "debug/prelude"
 end
 
